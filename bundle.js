@@ -1,11 +1,17 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = draw_chart;
 var _chart = require("chart.js");
+var _dateAndTime = _interopRequireDefault(require("date-and-time"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -33,9 +39,83 @@ function draw_chart() {
       }
     }
   });
+  var ctx2 = document.getElementById('weatherChart');
+  var city = "Abu Dhabi";
+  var api = 2265430818754 .toString(16) + 211253961048211 .toString(16) + 53305914612 .toString(16);
+  weather_chart();
+  function weather_chart() {
+    return _weather_chart.apply(this, arguments);
+  }
+  function _weather_chart() {
+    _weather_chart = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var url, response, data, url2, response2, data2, times, temps;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            url = "https://api.openweathermap.org/data/2.5/weather?q=".concat(city, "&APPID=").concat(api);
+            _context.next = 3;
+            return fetch(url);
+          case 3:
+            response = _context.sent;
+            _context.next = 6;
+            return response.json();
+          case 6:
+            data = _context.sent;
+            url2 = "https://api.openweathermap.org/data/2.5/onecall?lat=".concat(data.coord.lat, "&lon=").concat(data.coord.lon, "&exclude=minutely,alerts&units=metric&appid=").concat(api);
+            _context.next = 10;
+            return fetch(url2);
+          case 10:
+            response2 = _context.sent;
+            _context.next = 13;
+            return response2.json();
+          case 13:
+            data2 = _context.sent;
+            times = data2.hourly.map(function (item) {
+              return _dateAndTime["default"].format(new Date(item['dt'] * 1000), 'hh:mm A');
+            });
+            temps = data2.hourly.map(function (item) {
+              return item['temp'];
+            });
+            new _chart.Chart(ctx2, {
+              type: 'line',
+              data: {
+                labels: times,
+                datasets: [{
+                  label: 'Temperature',
+                  data: temps,
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          case 17:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+    return _weather_chart.apply(this, arguments);
+  }
 }
 
-},{"chart.js":8}],2:[function(require,module,exports){
+/* API INFO
+
+find lon/lat
+https://api.openweathermap.org/data/2.5/weather?q=london&APPID=20f7632ffc2c022654e4093c6947b4f4
+
+find weather
+https://api.openweathermap.org/data/2.5/onecall?lat=51.5085&lon=-0.1257&exclude=minutely,alerts&units=metric&appid=20f7632ffc2c022654e4093c6947b4f4
+
+(new version is in the websites)
+*/
+
+},{"chart.js":8,"date-and-time":10}],2:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -354,30 +434,16 @@ function images() {
 var _chartjs = _interopRequireDefault(require("./chartjs"));
 var _dictionary = _interopRequireDefault(require("./dictionary"));
 var _images = _interopRequireDefault(require("./images"));
-var _uniq = _interopRequireDefault(require("uniq"));
 var _food = _interopRequireDefault(require("./food"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 //browserify main.js -o bundle.js
 
-var data = [1, 2, 2, 3, 4, 5, 5, 5, 6];
-console.log((0, _uniq["default"])(data));
 (0, _chartjs["default"])();
 (0, _images["default"])();
 (0, _dictionary["default"])();
 (0, _food["default"])();
 
-/* API INFO
-
-find lon/lat
-https://api.openweathermap.org/data/2.5/weather?q=london&APPID=20f7632ffc2c022654e4093c6947b4f4
-
-find weather
-https://api.openweathermap.org/data/2.5/onecall?lat=51.5085&lon=-0.1257&exclude=minutely,alerts&units=metric&appid=20f7632ffc2c022654e4093c6947b4f4
-
-(new version is in the websites)
-*/
-
-},{"./chartjs":1,"./dictionary":3,"./food":4,"./images":5,"uniq":10}],7:[function(require,module,exports){
+},{"./chartjs":1,"./dictionary":3,"./food":4,"./images":5}],7:[function(require,module,exports){
 /*!
  * @kurkle/color v0.3.2
  * https://github.com/kurkle/color#readme
@@ -15397,63 +15463,528 @@ exports.valueOrDefault = valueOrDefault;
 
 
 },{"@kurkle/color":7}],10:[function(require,module,exports){
-"use strict"
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.date = factory());
+})(this, (function () { 'use strict';
 
-function unique_pred(list, compare) {
-  var ptr = 1
-    , len = list.length
-    , a=list[0], b=list[0]
-  for(var i=1; i<len; ++i) {
-    b = a
-    a = list[i]
-    if(compare(a, b)) {
-      if(i === ptr) {
-        ptr++
-        continue
-      }
-      list[ptr++] = a
-    }
-  }
-  list.length = ptr
-  return list
-}
+    /**
+     * @preserve date-and-time (c) KNOWLEDGECODE | MIT
+     */
 
-function unique_eq(list) {
-  var ptr = 1
-    , len = list.length
-    , a=list[0], b = list[0]
-  for(var i=1; i<len; ++i, b=a) {
-    b = a
-    a = list[i]
-    if(a !== b) {
-      if(i === ptr) {
-        ptr++
-        continue
-      }
-      list[ptr++] = a
-    }
-  }
-  list.length = ptr
-  return list
-}
+    var locales = {},
+        plugins = {},
+        lang = 'en',
+        _res = {
+            MMMM: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            MMM: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            dddd: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            ddd: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            dd: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+            A: ['AM', 'PM']
+        },
+        _formatter = {
+            YYYY: function (d/*, formatString*/) { return ('000' + d.getFullYear()).slice(-4); },
+            YY: function (d/*, formatString*/) { return ('0' + d.getFullYear()).slice(-2); },
+            Y: function (d/*, formatString*/) { return '' + d.getFullYear(); },
+            MMMM: function (d/*, formatString*/) { return this.res.MMMM[d.getMonth()]; },
+            MMM: function (d/*, formatString*/) { return this.res.MMM[d.getMonth()]; },
+            MM: function (d/*, formatString*/) { return ('0' + (d.getMonth() + 1)).slice(-2); },
+            M: function (d/*, formatString*/) { return '' + (d.getMonth() + 1); },
+            DD: function (d/*, formatString*/) { return ('0' + d.getDate()).slice(-2); },
+            D: function (d/*, formatString*/) { return '' + d.getDate(); },
+            HH: function (d/*, formatString*/) { return ('0' + d.getHours()).slice(-2); },
+            H: function (d/*, formatString*/) { return '' + d.getHours(); },
+            A: function (d/*, formatString*/) { return this.res.A[d.getHours() > 11 | 0]; },
+            hh: function (d/*, formatString*/) { return ('0' + (d.getHours() % 12 || 12)).slice(-2); },
+            h: function (d/*, formatString*/) { return '' + (d.getHours() % 12 || 12); },
+            mm: function (d/*, formatString*/) { return ('0' + d.getMinutes()).slice(-2); },
+            m: function (d/*, formatString*/) { return '' + d.getMinutes(); },
+            ss: function (d/*, formatString*/) { return ('0' + d.getSeconds()).slice(-2); },
+            s: function (d/*, formatString*/) { return '' + d.getSeconds(); },
+            SSS: function (d/*, formatString*/) { return ('00' + d.getMilliseconds()).slice(-3); },
+            SS: function (d/*, formatString*/) { return ('0' + (d.getMilliseconds() / 10 | 0)).slice(-2); },
+            S: function (d/*, formatString*/) { return '' + (d.getMilliseconds() / 100 | 0); },
+            dddd: function (d/*, formatString*/) { return this.res.dddd[d.getDay()]; },
+            ddd: function (d/*, formatString*/) { return this.res.ddd[d.getDay()]; },
+            dd: function (d/*, formatString*/) { return this.res.dd[d.getDay()]; },
+            Z: function (d/*, formatString*/) {
+                var offset = d.getTimezoneOffset() / 0.6 | 0;
+                return (offset > 0 ? '-' : '+') + ('000' + Math.abs(offset - (offset % 100 * 0.4 | 0))).slice(-4);
+            },
+            ZZ: function (d/*, formatString*/) {
+                var offset = d.getTimezoneOffset();
+                var mod = Math.abs(offset);
+                return (offset > 0 ? '-' : '+') + ('0' + (mod / 60 | 0)).slice(-2) + ':' + ('0' + mod % 60).slice(-2);
+            },
+            post: function (str) { return str; },
+            res: _res
+        },
+        _parser = {
+            YYYY: function (str/*, formatString */) { return this.exec(/^\d{4}/, str); },
+            Y: function (str/*, formatString */) { return this.exec(/^\d{1,4}/, str); },
+            MMMM: function (str/*, formatString */) {
+                var result = this.find(this.res.MMMM, str);
+                result.value++;
+                return result;
+            },
+            MMM: function (str/*, formatString */) {
+                var result = this.find(this.res.MMM, str);
+                result.value++;
+                return result;
+            },
+            MM: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
+            M: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
+            DD: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
+            D: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
+            HH: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
+            H: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
+            A: function (str/*, formatString */) { return this.find(this.res.A, str); },
+            hh: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
+            h: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
+            mm: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
+            m: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
+            ss: function (str/*, formatString */) { return this.exec(/^\d\d/, str); },
+            s: function (str/*, formatString */) { return this.exec(/^\d\d?/, str); },
+            SSS: function (str/*, formatString */) { return this.exec(/^\d{1,3}/, str); },
+            SS: function (str/*, formatString */) {
+                var result = this.exec(/^\d\d?/, str);
+                result.value *= 10;
+                return result;
+            },
+            S: function (str/*, formatString */) {
+                var result = this.exec(/^\d/, str);
+                result.value *= 100;
+                return result;
+            },
+            Z: function (str/*, formatString */) {
+                var result = this.exec(/^[+-]\d{2}[0-5]\d/, str);
+                result.value = (result.value / 100 | 0) * -60 - result.value % 100;
+                return result;
+            },
+            ZZ: function (str/*, formatString */) {
+                var arr = /^([+-])(\d{2}):([0-5]\d)/.exec(str) || ['', '', '', ''];
+                return { value: 0 - ((arr[1] + arr[2] | 0) * 60 + (arr[1] + arr[3] | 0)), length: arr[0].length };
+            },
+            h12: function (h, a) { return (h === 12 ? 0 : h) + a * 12; },
+            exec: function (re, str) {
+                var result = (re.exec(str) || [''])[0];
+                return { value: result | 0, length: result.length };
+            },
+            find: function (array, str) {
+                var index = -1, length = 0;
 
-function unique(list, compare, sorted) {
-  if(list.length === 0) {
-    return list
-  }
-  if(compare) {
-    if(!sorted) {
-      list.sort(compare)
-    }
-    return unique_pred(list, compare)
-  }
-  if(!sorted) {
-    list.sort()
-  }
-  return unique_eq(list)
-}
+                for (var i = 0, len = array.length, item; i < len; i++) {
+                    item = array[i];
+                    if (!str.indexOf(item) && item.length > length) {
+                        index = i;
+                        length = item.length;
+                    }
+                }
+                return { value: index, length: length };
+            },
+            pre: function (str) { return str; },
+            res: _res
+        },
+        extend = function (base, props, override, res) {
+            var obj = {}, key;
 
-module.exports = unique
+            for (key in base) {
+                obj[key] = base[key];
+            }
+            for (key in props || {}) {
+                if (!(!!override ^ !!obj[key])) {
+                    obj[key] = props[key];
+                }
+            }
+            if (res) {
+                obj.res = res;
+            }
+            return obj;
+        },
+        proto = {
+            _formatter: _formatter,
+            _parser: _parser
+        },
+        date;
+
+    /**
+     * Compiling format strings
+     * @param {string} formatString - A format string
+     * @returns {Array.<string>} A compiled object
+     */
+    proto.compile = function (formatString) {
+        return [formatString].concat(formatString.match(/\[(?:[^[\]]|\[[^[\]]*])*]|([A-Za-z])\1*|\.{3}|./g) || []);
+    };
+
+    /**
+     * Formatting date and time objects (Date -> String)
+     * @param {Date} dateObj - A Date object
+     * @param {string|Array.<string>} arg - A format string or its compiled object
+     * @param {boolean} [utc] - Output as UTC
+     * @returns {string} A formatted string
+     */
+    proto.format = function (dateObj, arg, utc) {
+        var ctx = this || date, pattern = typeof arg === 'string' ? ctx.compile(arg) : arg,
+            formatter = ctx._formatter,
+            d = (function () {
+                if (utc) {
+                    var u = new Date(dateObj.getTime());
+
+                    u.getFullYear = u.getUTCFullYear;
+                    u.getMonth = u.getUTCMonth;
+                    u.getDate = u.getUTCDate;
+                    u.getHours = u.getUTCHours;
+                    u.getMinutes = u.getUTCMinutes;
+                    u.getSeconds = u.getUTCSeconds;
+                    u.getMilliseconds = u.getUTCMilliseconds;
+                    u.getDay = u.getUTCDay;
+                    u.getTimezoneOffset = function () { return 0; };
+                    u.getTimezoneName = function () { return 'UTC'; };
+                    return u;
+                }
+                return dateObj;
+            }()),
+            comment = /^\[(.*)\]$/, str = '';
+
+        for (var i = 1, len = pattern.length, token; i < len; i++) {
+            token = pattern[i];
+            str += formatter[token]
+                ? formatter.post(formatter[token](d, pattern[0]))
+                : comment.test(token) ? token.replace(comment, '$1') : token;
+        }
+        return str;
+    };
+
+    /**
+     * Pre-parsing date and time strings
+     * @param {string} dateString - A date and time string
+     * @param {string|Array.<string>} arg - A format string or its compiled object
+     * @param {boolean} [utc] - Input as UTC
+     * @returns {Object} A pre-parsed result object
+     */
+    proto.preparse = function (dateString, arg) {
+        var ctx = this || date, pattern = typeof arg === 'string' ? ctx.compile(arg) : arg,
+            parser = ctx._parser,
+            dt = { Y: 1970, M: 1, D: 1, H: 0, A: 0, h: 0, m: 0, s: 0, S: 0, Z: 0, _index: 0, _length: 0, _match: 0 },
+            wildcard = ' ', comment = /^\[(.*)\]$/, ellipsis = '...';
+
+        dateString = parser.pre(dateString);
+        for (var i = 1, len = pattern.length, token, str, result; i < len; i++) {
+            token = pattern[i];
+            str = dateString.substring(dt._index);
+
+            if (parser[token]) {
+                result = parser[token](str, pattern[0]);
+                if (!result.length) {
+                  break;
+                }
+                dt[result.token || token.charAt(0)] = result.value;
+                dt._index += result.length;
+                dt._match++;
+            } else if (token === str.charAt(0) || token === wildcard) {
+                dt._index++;
+            } else if (comment.test(token) && !str.indexOf(token.replace(comment, '$1'))) {
+                dt._index += token.length - 2;
+            } else if (token === ellipsis) {
+                dt._index = dateString.length;
+                break;
+            } else {
+                break;
+            }
+        }
+        dt.H = dt.H || parser.h12(dt.h, dt.A);
+        dt._length = dateString.length;
+        return dt;
+    };
+
+    /**
+     * Parsing of date and time string (String -> Date)
+     * @param {string} dateString - A date-time string
+     * @param {string|Array.<string>} arg - A format string or its compiled object
+     * @param {boolean} [utc] - Input as UTC
+     * @returns {Date} A Date object
+     */
+    proto.parse = function (dateString, arg, utc) {
+        var ctx = this || date, pattern = typeof arg === 'string' ? ctx.compile(arg) : arg,
+            dt = ctx.preparse(dateString, pattern);
+
+        if (ctx.isValid(dt)) {
+            dt.M -= dt.Y < 100 ? 22801 : 1; // 22801 = 1900 * 12 + 1
+            if (utc || ~ctx._parser.find(pattern, 'ZZ').value) {
+                return new Date(Date.UTC(dt.Y, dt.M, dt.D, dt.H, dt.m + dt.Z, dt.s, dt.S));
+            }
+            return new Date(dt.Y, dt.M, dt.D, dt.H, dt.m, dt.s, dt.S);
+        }
+        return new Date(NaN);
+    };
+
+    /**
+     * Date and time string validation
+     * @param {Object|string} arg1 - A pre-parsed result object or a date and time string
+     * @param {string|Array.<string>} [arg2] - A format string or its compiled object
+     * @returns {boolean} Whether the date and time string is a valid date and time
+     */
+    proto.isValid = function (arg1, arg2) {
+        var ctx = this || date, dt = typeof arg1 === 'string' ? ctx.preparse(arg1, arg2) : arg1;
+
+        return !(
+            dt._index < 1 || dt._length < 1 || dt._index - dt._length || dt._match < 1
+            || dt.Y < 1 || dt.Y > 9999 || dt.M < 1 || dt.M > 12 || dt.D < 1 || dt.D >  new Date(dt.Y, dt.M, 0).getDate()
+            || dt.H < 0 || dt.H > 23 || dt.m < 0 || dt.m > 59 || dt.s < 0 || dt.s > 59 || dt.S < 0 || dt.S > 999
+            || dt.Z < -840 || dt.Z > 720
+        );
+    };
+
+    /**
+     * Format transformation of date and time string (String -> String)
+     * @param {string} dateString - A date and time string
+     * @param {string|Array.<string>} arg1 - A format string or its compiled object before transformation
+     * @param {string|Array.<string>} arg2 - A format string or its compiled object after transformation
+     * @param {boolean} [utc] - Output as UTC
+     * @returns {string} A formatted string
+     */
+    proto.transform = function (dateString, arg1, arg2, utc) {
+        const ctx = this || date;
+        return ctx.format(ctx.parse(dateString, arg1), arg2, utc);
+    };
+
+    /**
+     * Adding years
+     * @param {Date} dateObj - A Date object
+     * @param {number} years - Number of years to add
+     * @param {boolean} [utc] - Calculates as UTC
+     * @returns {Date} The Date object after adding the value
+     */
+    proto.addYears = function (dateObj, years, utc) {
+        return (this || date).addMonths(dateObj, years * 12, utc);
+    };
+
+    /**
+     * Adding months
+     * @param {Date} dateObj - A Date object
+     * @param {number} months - Number of months to add
+     * @param {boolean} [utc] - Calculates as UTC
+     * @returns {Date} The Date object after adding the value
+     */
+    proto.addMonths = function (dateObj, months, utc) {
+        var d = new Date(dateObj.getTime());
+
+        if (utc) {
+            d.setUTCMonth(d.getUTCMonth() + months);
+            if (d.getUTCDate() < dateObj.getUTCDate()) {
+                return (this || date).addDays(d, -d.getUTCDate(), utc);
+            }
+        } else {
+            d.setMonth(d.getMonth() + months);
+            if (d.getDate() < dateObj.getDate()) {
+                return (this || date).addDays(d, -d.getDate(), utc);
+            }
+        }
+        return d;
+    };
+
+    /**
+     * Adding days
+     * @param {Date} dateObj - A Date object
+     * @param {number} days - Number of days to add
+     * @param {boolean} [utc] - Calculates as UTC
+     * @returns {Date} The Date object after adding the value
+     */
+    proto.addDays = function (dateObj, days, utc) {
+        return (this || date).addHours(dateObj, days * 24, utc);
+    };
+
+    /**
+     * Adding hours
+     * @param {Date} dateObj - A Date object
+     * @param {number} hours - Number of hours to add
+     * @param {boolean} [utc] - Calculates as UTC
+     * @returns {Date} The Date object after adding the value
+     */
+    proto.addHours = function (dateObj, hours, utc) {
+        return (this || date).addMinutes(dateObj, hours * 60, utc);
+    };
+
+    /**
+     * Adding minutes
+     * @param {Date} dateObj - A Date object
+     * @param {number} minutes - Number of minutes to add
+     * @param {boolean} [utc] - Calculates as UTC
+     * @returns {Date} The Date object after adding the value
+     */
+    proto.addMinutes = function (dateObj, minutes, utc) {
+        return (this || date).addSeconds(dateObj, minutes * 60, utc);
+    };
+
+    /**
+     * Adding seconds
+     * @param {Date} dateObj - A Date object
+     * @param {number} seconds - Number of seconds to add
+     * @param {boolean} [utc] - Calculates as UTC
+     * @returns {Date} The Date object after adding the value
+     */
+    proto.addSeconds = function (dateObj, seconds, utc) {
+        return (this || date).addMilliseconds(dateObj, seconds * 1000, utc);
+    };
+
+    /**
+     * Adding milliseconds
+     * @param {Date} dateObj - A Date object
+     * @param {number} milliseconds - Number of milliseconds to add
+     * @param {boolean} [utc] - Calculates as UTC
+     * @returns {Date} The Date object after adding the value
+     */
+    proto.addMilliseconds = function (dateObj, milliseconds, utc) {
+        var d = new Date(dateObj.getTime());
+
+        if (utc) {
+            d.setUTCMilliseconds(d.getUTCMilliseconds() + milliseconds);
+        } else {
+            d.setMilliseconds(d.getMilliseconds() + milliseconds);
+        }
+        return d;
+    };
+
+    /**
+     * Subtracting two dates (date1 - date2)
+     * @param {Date} date1 - A Date object
+     * @param {Date} date2 - A Date object
+     * @returns {Object} The result object of subtracting date2 from date1
+     */
+    proto.subtract = function (date1, date2) {
+        var delta = date1.getTime() - date2.getTime();
+
+        return {
+            toMilliseconds: function () {
+                return delta;
+            },
+            toSeconds: function () {
+                return delta / 1000;
+            },
+            toMinutes: function () {
+                return delta / 60000;
+            },
+            toHours: function () {
+                return delta / 3600000;
+            },
+            toDays: function () {
+                return delta / 86400000;
+            }
+        };
+    };
+
+    /**
+     * Whether a year is a leap year
+     * @param {number} y - A year to check
+     * @returns {boolean} Whether the year is a leap year
+     */
+    proto.isLeapYear = function (y) {
+        return (!(y % 4) && !!(y % 100)) || !(y % 400);
+    };
+
+    /**
+     * Comparison of two dates
+     * @param {Date} date1 - A Date object
+     * @param {Date} date2 - A Date object
+     * @returns {boolean} Whether the two dates are the same day (time is ignored)
+     */
+    proto.isSameDay = function (date1, date2) {
+        return date1.toDateString() === date2.toDateString();
+    };
+
+    /**
+     * Definition of new locale
+     * @param {string} code - A language code
+     * @param {Function} locale - A locale installer
+     * @returns {void}
+     */
+    proto.locale = function (code, locale) {
+        if (!locales[code]) {
+            locales[code] = locale;
+        }
+    };
+
+    /**
+     * Definition of new plugin
+     * @param {string} name - A plugin name
+     * @param {Function} plugin - A plugin installer
+     * @returns {void}
+     */
+    proto.plugin = function (name, plugin) {
+        if (!plugins[name]) {
+            plugins[name] = plugin;
+        }
+    };
+
+    date = extend(proto);
+
+    /**
+     * Changing locales
+     * @param {Function|string} [locale] - A locale installer or language code
+     * @returns {string} The current language code
+     */
+    date.locale = function (locale) {
+        var install = typeof locale === 'function' ? locale : date.locale[locale];
+
+        if (!install) {
+            return lang;
+        }
+        lang = install(proto);
+
+        var extension = locales[lang] || {};
+        var res = extend(_res, extension.res, true);
+        var formatter = extend(_formatter, extension.formatter, true, res);
+        var parser = extend(_parser, extension.parser, true, res);
+
+        date._formatter = formatter;
+        date._parser = parser;
+
+        for (var plugin in plugins) {
+            date.extend(plugins[plugin]);
+        }
+
+        return lang;
+    };
+
+    /**
+     * Functional extension
+     * @param {Object} extension - An extension object
+     * @returns {void}
+     */
+    date.extend = function (extension) {
+        var res = extend(date._parser.res, extension.res);
+        var extender = extension.extender || {};
+
+        date._formatter = extend(date._formatter, extension.formatter, false, res);
+        date._parser = extend(date._parser, extension.parser, false, res);
+
+        for (var key in extender) {
+            if (!date[key]) {
+                date[key] = extender[key];
+            }
+        }
+    };
+
+    /**
+     * Importing plugins
+     * @param {Function|string} plugin - A plugin installer or plugin name
+     * @returns {void}
+     */
+    date.plugin = function (plugin) {
+        var install = typeof plugin === 'function' ? plugin : date.plugin[plugin];
+
+        if (install) {
+            date.extend(plugins[install(proto, date)] || {});
+        }
+    };
+
+    var date$1 = date;
+
+    return date$1;
+
+}));
 
 },{}],11:[function(require,module,exports){
 "use strict";

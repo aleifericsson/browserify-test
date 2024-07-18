@@ -4,7 +4,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch" : "npx watchify main.js -o bundle.js"
+    "watch": "npx watchify main.js -o bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -13,8 +13,7 @@
   "dependencies": {
     "@babel/core": "^7.24.9",
     "chart.js": "^4.4.3",
-    "uniq": "^1.0.1",
-    "uuid": "^9.0.1"
+    "date-and-time": "^3.4.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.8",
